@@ -11,7 +11,6 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "client": "file:",
     "date-fns": "^2.30.0",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.1",
@@ -23,11 +22,11 @@
     "react-scripts": "^5.0.1",
     "redux-persist": "^6.0.0",
     "sass": "^1.69.5",
+    "svgo": "^3.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -51,6 +50,13 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/plugin-transform-class-properties": "^7.25.9",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.25.9",
+    "@babel/plugin-transform-numeric-separator": "^7.25.9",
+    "@babel/plugin-transform-optional-chaining": "^7.25.9",
+    "@babel/plugin-transform-private-methods": "^7.25.9",
+    "@babel/plugin-transform-private-property-in-object": "^7.25.9",
+    "cross-env": "^7.0.3"
   }
 }

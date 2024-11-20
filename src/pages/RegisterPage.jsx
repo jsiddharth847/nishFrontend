@@ -51,7 +51,7 @@ const RegisterPage = () => {
       }
 
       // Make a POST request to the backend
-      const response = await fetch("http://localhost:3001/auth/register", {
+      const response = await fetch("https://nish-backend.vercel.app/auth/register", {
         method: "POST",
         body: register_form,
       });

@@ -18,8 +18,8 @@ const Listings = () => {
     try {
       const response = await fetch(
         selectedCategory !== "All"
-          ? `http://localhost:3001/properties?category=${selectedCategory}`
-          : "http://localhost:3001/properties",
+          ? `https://nish-backend-git-main-siddharth-jains-projects-d140baae.vercel.app/properties?category=${selectedCategory}`
+          : "https://nish-backend-git-main-siddharth-jains-projects-d140baae.vercel.app/properties",
         {
           method: "GET",
         }
@@ -67,7 +67,7 @@ const Listings = () => {
               category,
               type,
               price,
-              booking=false
+              booking = false
             }) => (
               <ListingCard
                 listingId={_id}

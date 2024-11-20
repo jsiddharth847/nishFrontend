@@ -50,10 +50,10 @@ const ListingCard = ({
   const patchWishList = async () => {
     if (user?._id !== creator._id) {
     const response = await fetch(
-      `http://localhost:3001/users/${user?._id}/${listingId}`,
+      `https://nish-backend-git-main-siddharth-jains-projects-d140baae.vercel.app/users/${user?._id}/${listingId}`,
       {
         method: "PATCH",
-        header: {
+        headers: {
           "Content-Type": "application/json",
         },
       }
@@ -78,7 +78,7 @@ const ListingCard = ({
           {listingPhotoPaths?.map((photo, index) => (
             <div key={index} className="slide">
               <img
-                src={`http://localhost:3001/${photo?.replace("public", "")}`}
+                src={`https://nish-backend-git-main-siddharth-jains-projects-d140baae.vercel.app/${photo?.replace("public", "")}`}
                 alt={`photo ${index + 1}`}
               />
               <div

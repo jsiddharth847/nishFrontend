@@ -9,7 +9,7 @@ import { DateRange } from "react-date-range";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
 import { useSelector } from "react-redux";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
 
 const ListingDetails = () => {
   const [loading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ const ListingDetails = () => {
   const getListingDetails = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3001/properties/${listingId}`,
+        `https://nish-backend-git-main-siddharth-jains-projects-d140baae.vercel.app/properties/${listingId}`,
         {
           method: "GET",
         }
@@ -36,10 +36,9 @@ const ListingDetails = () => {
 
   useEffect(() => {
     getListingDetails();
-  }, []);
+  }, [listingId]);
 
-  console.log(listing)
-
+  console.log(listing);
 
   /* BOOKING CALENDAR */
   const [dateRange, setDateRange] = useState([
@@ -60,9 +59,9 @@ const ListingDetails = () => {
   const dayCount = Math.round(end - start) / (1000 * 60 * 60 * 24); // Calculate the difference in day unit
 
   /* SUBMIT BOOKING */
-  const customerId = useSelector((state) => state?.user?._id)
+  const customerId = useSelector((state) => state?.user?._id);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     try {
@@ -73,30 +72,33 @@ const ListingDetails = () => {
         startDate: dateRange[0].startDate.toDateString(),
         endDate: dateRange[0].endDate.toDateString(),
         totalPrice: listing.price * dayCount,
-      }
+      };
 
-      const response = await fetch("http://localhost:3001/bookings/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(bookingForm)
-      })
+      const response = await fetch(
+        "https://nish-backend-git-main-siddharth-jains-projects-d140baae.vercel.app/bookings/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(bookingForm),
+        }
+      );
 
       if (response.ok) {
-        navigate(`/${customerId}/trips`)
+        navigate(`/${customerId}/trips`);
       }
     } catch (err) {
-      console.log("Submit Booking Failed.", err.message)
+      console.log("Submit Booking Failed.", err.message);
     }
-  }
+  };
 
   return loading ? (
     <Loader />
   ) : (
     <>
       <Navbar />
-      
+
       <div className="listing-details">
         <div className="title">
           <h1>{listing.title}</h1>
@@ -106,15 +108,15 @@ const ListingDetails = () => {
         <div className="photos">
           {listing.listingPhotoPaths?.map((item) => (
             <img
-              src={`http://localhost:3001/${item.replace("public", "")}`}
+              src={`https://nish-backend-git-main-siddharth-jains-projects-d140baae.vercel.app/${item.replace("public", "")}`}
               alt="listing photo"
+              key={item}
             />
           ))}
         </div>
 
         <h2>
-          {listing.type} in {listing.city}, {listing.province},{" "}
-          {listing.country}
+          {listing.type} in {listing.city}, {listing.province}, {listing.country}
         </h2>
         <p>
           {listing.guestCount} guests - {listing.bedroomCount} bedroom(s) -{" "}
@@ -124,10 +126,11 @@ const ListingDetails = () => {
 
         <div className="profile">
           <img
-            src={`http://localhost:3001/${listing.creator.profileImagePath.replace(
+            src={`https://nish-backend-git-main-siddharth-jains-projects-d140baae.vercel.app/${listing.creator.profileImagePath.replace(
               "public",
               ""
             )}`}
+            alt="profile"
           />
           <h3>
             Hosted by {listing.creator.firstName} {listing.creator.lastName}
@@ -150,10 +153,7 @@ const ListingDetails = () => {
               {listing.amenities[0].split(",").map((item, index) => (
                 <div className="facility" key={index}>
                   <div className="facility_icon">
-                    {
-                      facilities.find((facility) => facility.name === item)
-                        ?.icon
-                    }
+                    {facilities.find((facility) => facility.name === item)?.icon}
                   </div>
                   <p>{item}</p>
                 </div>

@@ -128,7 +128,7 @@ const CreateListing = () => {
       });
 
       /* Send a POST request to the server */
-      const response = await fetch("https://nish-backend-git-main-siddharth-jains-projects-d140baae.vercel.app/properties/create", {
+      const response = await fetch("https://nish-backend.vercel.app/properties/create", {
         method: "POST",
         body: listingForm,
       });

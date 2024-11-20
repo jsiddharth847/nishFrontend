@@ -20,7 +20,7 @@ const ListingDetails = () => {
   const getListingDetails = async () => {
     try {
       const response = await fetch(
-        `https://nish-backend-git-main-siddharth-jains-projects-d140baae.vercel.app/properties/${listingId}`,
+        `https://nish-backend.vercel.app/properties/${listingId}`,
         {
           method: "GET",
         }
@@ -108,7 +108,7 @@ const ListingDetails = () => {
         <div className="photos">
           {listing.listingPhotoPaths?.map((item) => (
             <img
-              src={`https://nish-backend-git-main-siddharth-jains-projects-d140baae.vercel.app/${item.replace("public", "")}`}
+              src={`https://nish-backend.vercel.app/${item.replace("public", "")}`}
               alt="listing photo"
               key={item}
             />
@@ -126,7 +126,7 @@ const ListingDetails = () => {
 
         <div className="profile">
           <img
-            src={`https://nish-backend-git-main-siddharth-jains-projects-d140baae.vercel.app/${listing.creator.profileImagePath.replace(
+            src={`https://nish-backend.vercel.app/${listing.creator.profileImagePath.replace(
               "public",
               ""
             )}`}

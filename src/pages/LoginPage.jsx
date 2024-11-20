@@ -16,7 +16,7 @@ const LoginPage = () => {
 
     try {
       const response = await fetch(
-        "https://nish-backend-git-main-siddharth-jains-projects-d140baae.vercel.app/auth/login",
+        "https://nish-backend.vercel.app/auth/login",
         {
           method: "POST",
           headers: {
